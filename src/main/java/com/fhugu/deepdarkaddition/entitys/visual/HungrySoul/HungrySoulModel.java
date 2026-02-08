@@ -15,7 +15,7 @@ import net.minecraft.world.entity.Entity;
 
 public class HungrySoulModel extends EntityModel<HungrySoulRenderState> {
     public static final ModelLayerLocation HS_LAYER = new ModelLayerLocation(
-            ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "hungrysoul"),
+            ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "textures/entity/hungrysoul.png"),
             "main"
     );
 

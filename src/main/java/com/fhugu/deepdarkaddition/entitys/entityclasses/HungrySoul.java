@@ -6,6 +6,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.item.ItemStack;
@@ -22,11 +24,6 @@ public class HungrySoul extends LivingEntity {
     }
 
     @Override
-    protected void defineSynchedData(SynchedEntityData.Builder builder) {
-
-    }
-
-    @Override
     public boolean hurtServer(ServerLevel level, DamageSource damageSource, float amount) {
         return false;
     }
@@ -38,7 +35,7 @@ public class HungrySoul extends LivingEntity {
 
     @Override
     public ItemStack getItemBySlot(EquipmentSlot slot) {
-        return null;
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -61,5 +58,14 @@ public class HungrySoul extends LivingEntity {
 
     }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return createLivingAttributes()
+                .add(Attributes.MAX_HEALTH, 50.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.5)
+                .add(Attributes.ARMOR_TOUGHNESS, 10.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 1.0)
+                .add(Attributes.FOLLOW_RANGE, 3.0)
+                .add(Attributes.ATTACK_DAMAGE, 3.5);
+    }
 
 }

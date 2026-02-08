@@ -1,10 +1,6 @@
 package com.fhugu.deepdarkaddition;
 
-import com.fhugu.deepdarkaddition.entitys.ModEntitys;
-import com.fhugu.deepdarkaddition.entitys.visual.HungrySoul.HungrySoulRenderer;
-import com.fhugu.deepdarkaddition.events.RegisterEntityRenderer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -13,7 +9,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import net.neoforged.neoforge.common.NeoForge;
 
 // This class will not load on dedicated servers. Accessing visual side code from here is safe.
 @Mod(value = MainScript.MOD_ID, dist = Dist.CLIENT)
@@ -33,6 +28,6 @@ public class MainScriptClient {
         MainScript.LOGGER.info("HELLO FROM CLIENT SETUP");
         MainScript.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 
-        EntityRenderers.register(ModEntitys.HUNGRY_SOUL.get(), HungrySoulRenderer::new);
+        //EntityRenderers.register(ModEntitys.HUNGRY_SOUL.get(), HungrySoulRenderer::new);
     }
 }

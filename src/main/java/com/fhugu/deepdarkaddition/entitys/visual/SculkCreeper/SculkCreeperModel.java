@@ -3,33 +3,38 @@ package com.fhugu.deepdarkaddition.entitys.visual.SculkCreeper;// Made with Bloc
 // Paste this class into your mod and generate all required imports
 
 
+import com.fhugu.deepdarkaddition.MainScript;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-/*
-public class SculkCreeperModel<T extends Entity>  extends HierarchicalModel<T> {
-    private final ModelPart body;
-    private final ModelPart front_leg;
-    private final ModelPart back_leg;
-    private final ModelPart idk_right;
-    private final ModelPart idk_left;
-    private final ModelPart sound_wave;
 
-    public SculkCreeperModel(ModelPart root) {
+public class SculkCreeperModel extends EntityModel<SculkCreeperRenderState> {
+    public static final ModelLayerLocation SC_LAYER = new ModelLayerLocation(
+            ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "textures/entity/sculkcreeper.png"),
+            "main"
+    );
+
+    private final ModelPart body;
+    public final ModelPart sound_wave;
+
+    protected SculkCreeperModel(ModelPart root) {
+        super(root);
+
         this.body = root.getChild("body");
-        this.front_leg = this.body.getChild("front_leg");
-        this.back_leg = this.body.getChild("back_leg");
-        this.idk_right = this.body.getChild("idk_right");
-        this.idk_left = this.body.getChild("idk_left");
         this.sound_wave = root.getChild("sound_wave");
+        sound_wave.visible = false;
     }
 
     public static LayerDefinition createBodyLayer() {
-        MeshDefinition meshdefinition = new MeshDefinition();
-        PartDefinition partdefinition = meshdefinition.getRoot();
+        MeshDefinition mesh = new MeshDefinition();
+
+        PartDefinition partdefinition = mesh.getRoot();
 
         PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(16, 16).addBox(-4.0F, -18.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.0F))
                 .texOffs(0, 0).addBox(-4.0F, -26.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
@@ -62,23 +67,8 @@ public class SculkCreeperModel<T extends Entity>  extends HierarchicalModel<T> {
 
         PartDefinition sound_wave = partdefinition.addOrReplaceChild("sound_wave", CubeListBuilder.create().texOffs(13, 46).addBox(-9.0F, 0.0F, -9.0F, 17.0F, 0.0F, 18.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
-        return LayerDefinition.create(meshdefinition, 64, 64);
-    }
-
-    @Override
-    public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
-    }
-
-    @Override
-    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        body.render(poseStack, vertexConsumer, packedLight, packedOverlay);
-        //sound_wave.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        return LayerDefinition.create(mesh, 64, 64);
     }
 
 
-    @Override
-    public ModelPart root() {
-        return body;
-    }
-}*/
+}
