@@ -7,6 +7,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
 // The generic type in the superclass should be set to what entity you want to render.
@@ -25,6 +26,8 @@ public class SculkCreeperRenderer extends LivingEntityRenderer<SculkCreeper, Scu
     public void extractRenderState(SculkCreeper entity, SculkCreeperRenderState state, float partialTick) {
         super.extractRenderState(entity, state, partialTick);
         // Extract your own stuff here, see the beginning of the article.
+
+        state.reactToSoundState = entity.reactToSoundAnim;
     }
 
     @Override
@@ -44,5 +47,6 @@ public class SculkCreeperRenderer extends LivingEntityRenderer<SculkCreeper, Scu
     public ResourceLocation getTextureLocation(SculkCreeperRenderState renderState) {
         return SculkCreeperModel.SC_LAYER.model();
     }
+
 }
 

@@ -18,4 +18,5 @@ public class SculkCreeperRenderLayer extends RenderLayer<SculkCreeperRenderState
     public void render(PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, SculkCreeperRenderState renderState, float yRot, float xRot) {
         // ...
     }
+
 }

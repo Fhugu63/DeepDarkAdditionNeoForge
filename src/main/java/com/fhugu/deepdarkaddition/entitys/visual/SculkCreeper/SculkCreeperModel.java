@@ -4,15 +4,18 @@ package com.fhugu.deepdarkaddition.entitys.visual.SculkCreeper;// Made with Bloc
 
 
 import com.fhugu.deepdarkaddition.MainScript;
+import com.fhugu.deepdarkaddition.entitys.entityclasses.SculkCreeper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.Model;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.neoforged.neoforge.client.entity.animation.json.AnimationHolder;
 
 public class SculkCreeperModel extends EntityModel<SculkCreeperRenderState> {
     public static final ModelLayerLocation SC_LAYER = new ModelLayerLocation(
@@ -20,10 +23,13 @@ public class SculkCreeperModel extends EntityModel<SculkCreeperRenderState> {
             "main"
     );
 
+    public static final AnimationHolder REACT_TO_SOUND_ANIMATION =
+            Model.getAnimation(ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "sculkcreeper/sounddetectanimation"));
+
     private final ModelPart body;
     public final ModelPart sound_wave;
 
-    protected SculkCreeperModel(ModelPart root) {
+    public SculkCreeperModel(ModelPart root) {
         super(root);
 
         this.body = root.getChild("body");
@@ -70,5 +76,16 @@ public class SculkCreeperModel extends EntityModel<SculkCreeperRenderState> {
         return LayerDefinition.create(mesh, 64, 64);
     }
 
-
+    @Override
+    public void setupAnim(SculkCreeperRenderState state) {
+        // Calling super to reset all values to default.
+        super.setupAnim(state);
+        // Change the model parts.
+        animate(state.reactToSoundState, REACT_TO_SOUND_ANIMATION, 9);
+        if (state.reactToSoundState.isStarted()) {
+            sound_wave.visible=true;
+        } else {
+            sound_wave.visible=false;
+        }
+    }
 }

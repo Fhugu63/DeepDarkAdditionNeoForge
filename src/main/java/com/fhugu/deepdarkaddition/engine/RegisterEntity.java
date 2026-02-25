@@ -20,6 +20,9 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RenderLivingEvent;
+import net.neoforged.neoforge.client.event.RenderNameTagEvent;
+import net.neoforged.neoforge.common.util.TriState;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -47,7 +50,7 @@ public class RegisterEntity {
 
         DeferredHolder<EntityType<?>, EntityType<T>> entity =
                 ENTITY_TYPES.register(name, () -> builder.build(
-                        ResourceKey.create(Registries.ENTITY_TYPE, modelLayerLocation.model())));
+                        ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID,"sculk_creeper"))));
 
         layerDefinitionsMap.put(modelLayerLocation, supplier);
         entityRendererProviderMap.put(entity, entityRendererProvider);
@@ -75,6 +78,12 @@ public class RegisterEntity {
                 event.put(entityType.get(), supplier.get().build())
         ));
         //event.put(ModEntitys.HUNGRY_SOUL.get(), HungrySoul.createLivingAttributes().build());
+    }
+
+    @SubscribeEvent // on the game event bus
+    public static void renderNameTag(RenderNameTagEvent.CanRender event) {
+        // Uses TriState to set the return state
+        event.setCanRender(TriState.FALSE);
     }
 
 }

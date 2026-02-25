@@ -2,6 +2,7 @@ package com.fhugu.deepdarkaddition;
 
 import com.fhugu.deepdarkaddition.engine.RegisterEntity;
 import com.fhugu.deepdarkaddition.entitys.ModEntitys;
+import com.fhugu.deepdarkaddition.items.ModItems;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -62,6 +63,13 @@ public class MainScript {
             .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
                 output.accept(EXAMPLE_ITEM.get()); // Add the fhugu item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(ModItems.RESEARHDIARYPARTONE.get());
+                output.accept(ModItems.RESEARHDIARYPARTTWO.get());
+                output.accept(ModItems.RESEARHDIARYPARTTHREE.get());
+                output.accept(ModItems.RESEARHDIARYPARTFOUR.get());
+                output.accept(ModItems.RESEARHDIARYPARTFIVE.get());
+                output.accept(ModItems.RESEARHDIARYPARTSIX.get());
+                output.accept(ModItems.RESEARHDIARYPARTSEVEN.get());
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -73,7 +81,7 @@ public class MainScript {
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so tabs get registered
         CREATIVE_MODE_TABS.register(modEventBus);
 
@@ -107,7 +115,7 @@ public class MainScript {
     // Add the fhugu block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(EXAMPLE_BLOCK_ITEM);
+            //event.accept(EXAMPLE_BLOCK_ITEM);
         }
     }
 
