@@ -326,32 +326,32 @@ public class SculkCreeper extends Monster implements VibrationSystem {
             if (!splitedDiarys.contains("rdp1") && !diaryHasSelected) {
                 diaryHasSelected = true
 
-                val item = ItemStack(ModItems().RESEARHDIARYPARTONE.get(), 1)
+                val items = ItemStack(ModItems().RESEARHDIARYPARTONE.get(), 1)
 
                 savedData.diarys += "rdp1,"
                 savedData.setDirty()
 
-                this.spawnAtLocation(item)
+                this.spawnAtLocation(items)
             }
             if (!splitedDiarys.contains("rdp2") && !diaryHasSelected) {
                 diaryHasSelected = true
 
-                val item = ItemStack(ModItems().RESEARHDIARYPARTTWO.get(), 1)
+                val items = ItemStack(ModItems().RESEARHDIARYPARTTWO.get(), 1)
 
                 savedData.diarys += "rdp2,"
                 savedData.setDirty()
 
-                this.spawnAtLocation(item)
+                this.spawnAtLocation(items)
             }
             if (!splitedDiarys.contains("rdp3") && !diaryHasSelected) {
                 diaryHasSelected = true
 
-                val item = ItemStack(ModItems().RESEARHDIARYPARTTHREE.get(), 1)
+                val items = ItemStack(ModItems().RESEARHDIARYPARTTHREE.get(), 1)
 
                 savedData.diarys += "rdp3,"
                 savedData.setDirty()
 
-                this.spawnAtLocation(item)
+                this.spawnAtLocation(items)
             }
         }
     }*/

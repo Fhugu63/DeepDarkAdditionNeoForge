@@ -1,0 +1,11 @@
+{
+  "type": "deepdarkaddition:sculk_dimension_type",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "deepdarkaddition:sculk",
+    "biome_source": {
+      "type": "minecraft:fixed",
+      "biome": "minecraft:deep_dark"
+    }
+  }
+}

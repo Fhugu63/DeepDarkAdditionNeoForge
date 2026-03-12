@@ -1,0 +1,9 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "deepdarkaddition:item/rdp_one"
+  },
+  "properties": {
+    "hand_animation_on_swap": false
+  }
+}

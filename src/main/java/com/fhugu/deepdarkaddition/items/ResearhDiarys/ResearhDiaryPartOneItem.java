@@ -22,6 +22,6 @@ public class ResearhDiaryPartOneItem extends Item {
 
     public ResearhDiaryPartOneItem(Properties properties) {
         super(properties);
-        properties.effectiveModel().compareNamespaced(ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "item/rdp_one"));
+        properties.effectiveModel().compareNamespaced(ResourceLocation.fromNamespaceAndPath(MainScript.MOD_ID, "items/rdp_one"));
     }
 }

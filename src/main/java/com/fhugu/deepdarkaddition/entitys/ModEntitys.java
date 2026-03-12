@@ -2,8 +2,11 @@ package com.fhugu.deepdarkaddition.entitys;
 
 import com.fhugu.deepdarkaddition.MainScript;
 import com.fhugu.deepdarkaddition.engine.RegisterEntity;
+import com.fhugu.deepdarkaddition.entitys.entityclasses.CustomWarden;
 import com.fhugu.deepdarkaddition.entitys.entityclasses.HungrySoul;
 import com.fhugu.deepdarkaddition.entitys.entityclasses.SculkCreeper;
+import com.fhugu.deepdarkaddition.entitys.visual.CustomWarden.CustomWardenModel;
+import com.fhugu.deepdarkaddition.entitys.visual.CustomWarden.CustomWardenRenderer;
 import com.fhugu.deepdarkaddition.entitys.visual.HungrySoul.HungrySoulModel;
 import com.fhugu.deepdarkaddition.entitys.visual.HungrySoul.HungrySoulRenderer;
 import com.fhugu.deepdarkaddition.entitys.visual.SculkCreeper.SculkCreeperModel;
@@ -26,11 +29,15 @@ public class ModEntitys {
 
     public static final DeferredHolder<EntityType<?>, EntityType<HungrySoul>> HUNGRY_SOUL =
             RegisterEntity.registerEntity("hungry_soul", EntityType.Builder.of(HungrySoul::new, MobCategory.MONSTER).sized(0.5f,0.5f),
-                    HungrySoulModel.HS_LAYER, HungrySoulModel::createBodyLayer, HungrySoulRenderer::new, HungrySoul::createLivingAttributes);
+                    HungrySoulModel.HS_LAYER, HungrySoulModel::createBodyLayer, HungrySoulRenderer::new, HungrySoul::createAttributes);
 
     public static final DeferredHolder<EntityType<?>, EntityType<SculkCreeper>> SCULK_CREEPER =
             RegisterEntity.registerEntity("sculk_creeper", EntityType.Builder.of(SculkCreeper::new, MobCategory.MONSTER).sized(0.5f,1.5f),
                     SculkCreeperModel.SC_LAYER, SculkCreeperModel::createBodyLayer, SculkCreeperRenderer::new, SculkCreeper::createAttributes);
+
+    public static final DeferredHolder<EntityType<?>, EntityType<CustomWarden>> CUSTOM_WARDEN =
+            RegisterEntity.registerEntity("custom_warden", EntityType.Builder.of(CustomWarden::new, MobCategory.MONSTER).sized(1f,3f),
+                    CustomWardenModel.LAYER_LOCATION, CustomWardenModel::createBodyLayer, CustomWardenRenderer::new, CustomWarden::createAttributes);
 
     public static void register(IEventBus eventBus) {
         RegisterEntity.ENTITY_TYPES.register(eventBus);
